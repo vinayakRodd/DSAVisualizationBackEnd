@@ -2,8 +2,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
-const authRoutes = require("./routes/auth.routes.js");
-const connectToMongoDB = require("./db/connectToMongoDB");
+const authRoutes = require("./auth.routes.js");
+const connectToMongoDB = require("./connectToMongoDB");
 const cors = require('cors');
 dotenv.config();
 
