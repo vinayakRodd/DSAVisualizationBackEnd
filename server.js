@@ -9,12 +9,13 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = ['https://dsavisualizationfrontend-eccu.onrender.com'];
+
 app.use(cors({
-	origin: 'http://localhost:5173', // Allow requests from this frontend
-	methods: 'GET,POST,PUT,DELETE',
-	allowedHeaders: 'Content-Type,Authorization'
-  }));
-  
+  origin: allowedOrigins, // Allow specific origins
+  methods: ['GET', 'POST'], // Allow specific HTTP methods (adjust as needed)
+  credentials: true, // If you need to send cookies or authorization headers
+}));
 
 
 // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
