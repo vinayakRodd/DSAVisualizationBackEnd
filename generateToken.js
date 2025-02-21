@@ -5,6 +5,8 @@ const generateToken = (userId, res) => {
 		expiresIn: "7d", // Set token expiration to 7 days
 	});
 
+	console.log("token "+token)
+
 	res.cookie("jwt", token, {
 		httpOnly: true, // Prevents client-side JS access (security)
 		sameSite: "None", // Enables cross-origin cookies (important for frontend/backend on different domains)
