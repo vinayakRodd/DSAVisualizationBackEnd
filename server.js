@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = ['https://algorithmerz.in'];
+const allowedOrigins = ['https://algorithmerz.in,algorithmerz.in'];
 
 app.use(cors({
   origin: allowedOrigins, // Allow specific origins
