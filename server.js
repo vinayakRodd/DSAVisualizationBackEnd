@@ -36,7 +36,7 @@ app.get("/api/user-count", async (req, res) => {
   try {
     const count = await User.countDocuments();
     console.log(count);
-    res.json({ Count:count });
+    res.json({count});
   } catch (error) {
     res.status(500).json({ message: "Error fetching user count", error });
   }
