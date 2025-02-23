@@ -6,7 +6,7 @@ const authRoutes = require("./auth.routes.js");
 const connectToMongoDB = require("./connectToMongoDB");
 const cors = require('cors');
 
-const User = require("./user.models"); // Your Mongoose User model
+const User = require("./user.models.js"); // Your Mongoose User model
 dotenv.config();
 
 const app = express();
@@ -35,6 +35,7 @@ app.use("/api/auth",authRoutes);
 app.get("/api/user-count", async (req, res) => {
   try {
     const count = await User.countDocuments();
+    console.log(count);
     res.json({ Count:count });
   } catch (error) {
     res.status(500).json({ message: "Error fetching user count", error });
