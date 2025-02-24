@@ -9,8 +9,8 @@ const generateToken = (userId, res) => {
 
 	res.cookie("jwt", token, {
 		httpOnly: true, // Prevents client-side JS access (security)
-		sameSite: "None", // Enables cross-origin cookies (important for frontend/backend on different domains)
-		secure: process.env.NODE_ENV === "production", // Ensures cookies are only sent over HTTPS in production
+		sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Allows cross-site cookies in production
+		secure: process.env.NODE_ENV === "production", // Must be true if sameSite is None
 		maxAge: 7 * 24 * 60 * 60 * 1000, // Matches JWT expiration (7 days)
 	});
 };
