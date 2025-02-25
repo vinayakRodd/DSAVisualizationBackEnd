@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
 		username: {
 			type: String,
 			required: true,
-			unique: true,
+			
 		},
 		password: {
 			type: String,
@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-userSchema.index({ username: 1 }); 
+userSchema.index({ username: 1  }, { unique: true }); 
 
 const User = mongoose.model("User", userSchema);
 
