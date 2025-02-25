@@ -63,7 +63,7 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    console.log("Before Password Check");
+
     const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
     
 
@@ -71,10 +71,10 @@ const login = async (req, res) => {
       return res.status(400).json({ error: "Invalid username or password" });
     }
 
-     console.log("Before  Token setting");
+     
     generateTokenAndSetCookie(user._id, res);
 
-  console.log("After  Token setting");
+  
 
 
     res.status(200).json({
