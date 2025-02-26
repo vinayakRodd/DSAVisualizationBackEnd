@@ -62,17 +62,29 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
-    const user = await User.findOne({ username });
 
+    console.log("Before fetching email");
+    const user = await User.findOne({ username });
+    console.log("After fetching email");
+
+  
+
+    
     const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
+    console.log("After bycrypt");
     
 
     if (!user || !isPasswordCorrect) {
       return res.status(400).json({ error: "Invalid username or password" });
     }
 
-     
+
+    console.log("before token");
+    
     generateTokenAndSetCookie(user._id, res);
+
+    console.log("after token");
+    
 
   
 
