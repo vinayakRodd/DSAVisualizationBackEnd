@@ -49,3 +49,22 @@ app.listen(PORT, () => {
 	connectToMongoDB();
 	console.log(`Server Running on port ${PORT}`);
 });
+
+
+const fetch = require("node-fetch");
+
+const BACKEND_URL = "https://dsavisualizationbackend-4.onrender.com"; // Replace with your real backend URL
+
+setInterval(async () => {
+    try {
+        await fetch(`${BACKEND_URL}/api/auth/login`);
+        console.log("Pinged server to keep it awake");
+    } catch (err) {
+        console.error("Ping failed", err);
+    }
+}, 60 * 1000); // Ping every 1 minute
+
+
+
+
+
