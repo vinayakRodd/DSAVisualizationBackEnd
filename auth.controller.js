@@ -63,15 +63,11 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    console.log("Before fetching email");
     const user = await User.findOne({ username });
-    console.log("After fetching email");
 
   
-
     
     const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
-    console.log("After bycrypt");
     
 
     if (!user || !isPasswordCorrect) {
@@ -79,16 +75,10 @@ const login = async (req, res) => {
     }
 
 
-    console.log("before token");
     
     generateTokenAndSetCookie(user._id, res);
 
-    console.log("after token");
     
-
-  
-
-
     res.status(200).json({
       _id: user._id,
       fullName: user.fullName,
