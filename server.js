@@ -51,7 +51,7 @@ app.listen(PORT, () => {
 });
 
 
-const fetch = require("node-fetch");
+
 
 const BACKEND_URL = "https://dsavisualizationbackend-4.onrender.com"; // Replace with your real backend URL
 
